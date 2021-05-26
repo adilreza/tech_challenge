@@ -30,15 +30,24 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+PROJECTS_APPS = [
+    "src.tech_challenge_app",
+]
+
+THIRD_PARTY_APPS = ["rest_framework", "django_filters",]
+
+INSTALLED_APPS = (
+    [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tech_challenge_app',
-]
+    ]
+    + PROJECTS_APPS
+    + THIRD_PARTY_APPS
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

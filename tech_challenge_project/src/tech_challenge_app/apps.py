@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class TechChallengeAppConfig(AppConfig):
-    name = 'tech_challenge_app'
+    name = 'src.tech_challenge_app'
