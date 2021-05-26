@@ -6,3 +6,5 @@ setuptools==52.0.0
 sqlparse==0.4.1
 typing-extensions==3.10.0.0
 wheel==0.36.2
+djangorestframework==3.12.4
+django-filter==2.4.0
