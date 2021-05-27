@@ -36,8 +36,6 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 
-
-
 urlpatterns = [
     url(
         r"^swagger(?P<format>\.json|\.yaml)$",

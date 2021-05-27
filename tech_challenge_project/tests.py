@@ -9,7 +9,7 @@ class HelloTestCase(APITestCase):
 
     def test_record(self):
         data = {"first_name":"adil", "last_name":"reza","province":"Ok","dat_of_birth":"1997-01-12"}
-        url = "/api/v1/record/"
+        url = "/api/v1/records/"
         response = self.client.post(url, data)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -17,7 +17,7 @@ class HelloTestCase(APITestCase):
 
     def test_notice(self):
         data = {"first_name":"adil", "last_name":"reza","province":"Ok","dat_of_birth":"1997-01-12", "alt_first_name":"leo"}
-        url = "/api/v1/notice/"
+        url = "/api/v1/notices/"
         response = self.client.post(url, data)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
