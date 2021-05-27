@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from django.http import JsonResponse
 import json
 import requests
-from .utils import decision_maker, update_match
+from .utils import match, update_match
 
 # imported model 
 from .models import Notice
@@ -27,7 +27,7 @@ class RecordApi(APIView):
         except KeyError:
             date_of_birth="0000-00-00"
 
-        decision = decision_maker(first_name, last_name, province, date_of_birth)
+        decision = match(first_name, last_name, province, date_of_birth)
 
         result = update_match(decision, first_name, last_name, province, date_of_birth)
         return JsonResponse({"message":"updated database"})

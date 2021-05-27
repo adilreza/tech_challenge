@@ -32,7 +32,7 @@ def weak_match(first_name, last_name):
     return return_result;
 
 
-def decision_maker(first_name, last_name, province, date_of_birth):
+def match(first_name, last_name, province, date_of_birth):
     flag = 0
     if date_of_birth!="0000-00-00":
         print("start strong ------------")
