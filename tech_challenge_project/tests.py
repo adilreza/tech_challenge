@@ -12,6 +12,7 @@ class HelloTestCase(APITestCase):
         data = {"name": "adil5555"}
         response  = self.client.post('/api/v1/ping/', data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
     def test_hello2(self):
         data = {"name": "adil5555"}
         url = "/api/v1/ping/"
