@@ -34,7 +34,7 @@ PROJECTS_APPS = [
     "src.tech_challenge_app",
 ]
 
-THIRD_PARTY_APPS = ["rest_framework", "django_filters",]
+THIRD_PARTY_APPS = ["rest_framework", "django_filters", "drf_yasg"]
 
 INSTALLED_APPS = (
     [
