@@ -8,9 +8,9 @@ from src.tech_challenge_app.views import MatchViewSet
 
 router = DefaultRouter()
 
-router.register("record", RecordViewSet)
-router.register("notice", NoticeSerializer)
-router.register("match", MatchViewSet)
+router.register("records", RecordViewSet)
+router.register("notices", NoticeSerializer)
+router.register("matchs", MatchViewSet)
 
 
 urlpatterns = [

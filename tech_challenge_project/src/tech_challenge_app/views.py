@@ -12,12 +12,14 @@ from .serializers import MatchSerializer
 class MatchViewSet(viewsets.ModelViewSet):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
-    filter_backends  = (DjangoFilterBackend, )
+    filter_backends  = (DjangoFilterBackend,)
+    http_method_names = ['get',]
 
 class RecordViewSet(viewsets.ModelViewSet):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
     filter_backends  = (DjangoFilterBackend, )
+    http_method_names = ['post','delete']
 
 class NoticeSerializer(viewsets.ModelViewSet):
     queryset = Notice.objects.all()
