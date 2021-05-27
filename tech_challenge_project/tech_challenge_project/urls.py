@@ -18,6 +18,7 @@ from django.urls import path
 from django.urls import path, include
 from django.conf.urls import url
 
+from src.tech_challenge_app.triggerapi import RecordApi
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -53,4 +54,5 @@ urlpatterns = [
     ),
     path('admin/', admin.site.urls),
     path('api/', include("src.api.urls")),
+    path('api/v1/record/trigger', RecordApi.as_view())
 ]
