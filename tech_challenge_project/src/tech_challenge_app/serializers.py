@@ -3,14 +3,7 @@ from django.db.models import fields
 from rest_framework import serializers
 
 # imported models
-from .models import Hello
 from .models import Notice, Record, Match
-
-
-class HelloSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Hello
-        fields = "__all__"
 
 class NoticeSerializer(serializers.ModelSerializer):
     class Meta:

@@ -3,15 +3,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.serializers import ModelSerializer
 
-from .models import Hello
 from .models import Match, Record, Notice
-from .serializers import HelloSerializer
 from .serializers import NoticeSerializer, RecordSerializer
 from .serializers import MatchSerializer
-
-class HelloViewSet(viewsets.ModelViewSet):
-    queryset = Hello.objects.all()
-    serializer_class = HelloSerializer
 
 class MatchViewSet(viewsets.ModelViewSet):
     queryset = Match.objects.all()

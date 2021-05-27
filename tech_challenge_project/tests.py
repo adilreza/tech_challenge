@@ -1,22 +1,11 @@
 import json
-from src.tech_challenge_app.models import Record, Hello, Notice, Match
+from src.tech_challenge_app.models import Record, Notice, Match
 from django.contrib.auth.models import User
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 
 class HelloTestCase(APITestCase):
-
-    def test_helloworld(self):
-        data = {"name": "adil5555"}
-        response  = self.client.post('/api/v1/ping/', data)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        
-    def test_hello2(self):
-        data = {"name": "adil5555"}
-        url = "/api/v1/ping/"
-        response  = self.client.post(url, data)
-        self.assertEqual(Hello.objects.count(),1)
 
     def test_record(self):
         data = {"first_name":"adil", "last_name":"reza","province":"Ok","dat_of_birth":"1997-01-12"}

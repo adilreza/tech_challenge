@@ -11,10 +11,6 @@ TYPE_CHOICES = (
     
 )
 
-
-class Hello(models.Model):
-    name = models.CharField(max_length=200)
-
 # class TimeStampedModel(models.Model):
 #     date_created = models.DateTimeField(blank=True, null=True)
 #     last_updated = models.DateTimeField(blank=True, null=True)
