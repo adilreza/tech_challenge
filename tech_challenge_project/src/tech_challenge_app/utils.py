@@ -8,7 +8,7 @@ from .models import Match
 
 # algo function 
 
-def strong_match_fun(first_name, last_name, date_of_birth):
+def strong_match(first_name, last_name, date_of_birth):
     return_result = 0
 
     return_result = Notice.objects.filter(first_name=first_name).filter(last_name=last_name).filter(dat_of_birth=date_of_birth).count()
@@ -17,14 +17,14 @@ def strong_match_fun(first_name, last_name, date_of_birth):
 
     return return_result;
 
-def possible_match_fun(first_name, last_name, province):
+def possible_match(first_name, last_name, province):
     return_result = 0
     return_result = Notice.objects.filter(first_name=first_name, last_name=last_name, province=province).count()
     if return_result==0:
         return_result = Notice.objects.filter(alt_first_name=first_name).filter(alt_last_name=last_name).filter(province=province).count()
     return return_result
 
-def weak_match_fun(first_name, last_name):
+def weak_match(first_name, last_name):
     return_result = 0
     return_result = Notice.objects.filter(first_name=first_name).filter(last_name=last_name).count()
     if return_result==0:
@@ -36,18 +36,18 @@ def decision_maker(first_name, last_name, province, date_of_birth):
     flag = 0
     if date_of_birth!="0000-00-00":
         print("start strong ------------")
-        result = strong_match_fun(first_name, last_name, date_of_birth)
+        result = strong_match(first_name, last_name, date_of_birth)
         # for strong 1
         flag=1
     elif province!="NOT":
         print("start possible ------------")
-        result = possible_match_fun(first_name, last_name, province)
+        result = possible_match(first_name, last_name, province)
         # for possible 2
         flag = 2
         
     elif date_of_birth=="0000-00-00" and province=="NOT":
         print("start weak ------------")
-        result = weak_match_fun(first_name, last_name)
+        result = weak_match(first_name, last_name)
         # for weak
         flag = 3
     
