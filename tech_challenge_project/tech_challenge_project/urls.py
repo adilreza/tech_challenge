@@ -18,7 +18,7 @@ from django.urls import path
 from django.urls import path, include
 from django.conf.urls import url
 
-from src.tech_challenge_app.triggerapi import RecordApi
+from src.tech_challenge_app.views import RecordApi
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
