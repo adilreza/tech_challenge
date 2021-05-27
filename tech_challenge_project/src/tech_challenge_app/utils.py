@@ -54,7 +54,7 @@ def decision_maker(first_name, last_name, province, date_of_birth):
     return flag
         
 
-def update_match_now(decision, first_name, last_name, province, date_of_birth):
+def update_match(decision, first_name, last_name, province, date_of_birth):
 
     if decision==1:
         notice_cnt1 = Notice.objects.filter(first_name=first_name, last_name=last_name, dat_of_birth=date_of_birth).count()

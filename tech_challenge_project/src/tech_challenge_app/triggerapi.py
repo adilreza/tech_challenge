@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from django.http import JsonResponse
 import json
 import requests
-from .utils import decision_maker, update_match_now
+from .utils import decision_maker, update_match
 
 # imported model 
 from .models import Notice
@@ -29,5 +29,5 @@ class RecordApi(APIView):
 
         decision = decision_maker(first_name, last_name, province, date_of_birth)
 
-        result = update_match_now(decision, first_name, last_name, province, date_of_birth)
+        result = update_match(decision, first_name, last_name, province, date_of_birth)
         return JsonResponse({"message":"updated database"})
