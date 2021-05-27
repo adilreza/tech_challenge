@@ -40,8 +40,8 @@ class ClientInfo(models.Model):
 
 
 class Notice(ClientInfo):
-    alt_first_name = models.CharField(max_length=100, help_text="alt first name")
-    alt_last_name = models.CharField(max_length=100, help_text="alt last name")
+    alt_first_name = models.CharField(max_length=100, help_text="alt first name", blank=True)
+    alt_last_name = models.CharField(max_length=100, help_text="alt last name", blank=True)
 
     def __str__(self):
         return '{} by {}'.format(self.first_name, self.alt_first_name)
