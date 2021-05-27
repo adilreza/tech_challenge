@@ -50,7 +50,7 @@ urlpatterns = [
         name="schema-swagger-ui",
     ),
     url(
-        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc",
+        r"^doc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc",
     ),
     path('admin/', admin.site.urls),
     path('api/', include("src.api.urls")),
