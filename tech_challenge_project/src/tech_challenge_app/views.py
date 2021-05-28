@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.views import APIView
+from django.http import Http404
 from django.http import JsonResponse
 import json
 from .utils import match, update_match
@@ -28,19 +29,25 @@ class NoticeSerializer(viewsets.ModelViewSet):
 
 class RecordApi(APIView):
 
-    def get(self, request):
-        data = Record.objects.values()
-        data_list = list(data)
+    def get_object(self, pk):
+        try:
+            return Record.objects.get(pk=pk)
+        except Record.DoesNotExist:
+            raise Http404
+
+    # def get(self, request, format=None):
+    #     data = Record.objects.values()
+    #     data_list = list(data)
         
-        return JsonResponse({"record":data_list})
+    #     return JsonResponse({"record":data_list})
     
-    def get(self, request, pk, format=None):
-        data = Record.objects.filter(pk=pk).values()
-        data_list = list(data)
-        return JsonResponse({"record":data_list})
+    # def get(self, request, pk, format=None):
+    #     data = Record.objects.filter(pk=pk).values()
+    #     data_list = list(data)
+    #     return JsonResponse({"record":data_list})
 
     
-    def post(self, request):
+    def post(self, request, format=None):
         json_data = json.loads(request.body)
         first_name = json_data["first_name"]
         last_name = json_data["last_name"]
@@ -59,6 +66,7 @@ class RecordApi(APIView):
         decision = match(first_name, last_name, province, date_of_birth)
         result = update_match(decision, first_name, last_name, province, date_of_birth)
         return JsonResponse({"message":"updated database"})
+        
     def delete(self, request, pk, format=None):
         pk2 = int(pk)
         data = Match.objects.filter(pk=pk2)
