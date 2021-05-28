@@ -10,7 +10,6 @@ from .models import Match
 
 def strong_match(first_name, last_name, date_of_birth):
     return_result = 0
-
     return_result = Notice.objects.filter(first_name=first_name).filter(last_name=last_name).filter(dat_of_birth=date_of_birth).count()
     if return_result==0:
         return_result = Notice.objects.filter(alt_first_name=first_name).filter(alt_last_name=last_name).filter( dat_of_birth=date_of_birth).count()
@@ -29,7 +28,7 @@ def weak_match(first_name, last_name):
     return_result = Notice.objects.filter(first_name=first_name).filter(last_name=last_name).count()
     if return_result==0:
         return_result = Notice.objects.filter(alt_first_name=first_name).filter(alt_last_name=last_name).count()
-    return return_result;
+    return return_result
 
 
 def match(first_name, last_name, province, date_of_birth):
@@ -37,19 +36,28 @@ def match(first_name, last_name, province, date_of_birth):
     if date_of_birth!="0000-00-00":
         print("start strong ------------")
         result = strong_match(first_name, last_name, date_of_birth)
-        # for strong 1
-        flag=1
+        if result==0:
+            flag=0
+        else:
+            # for strong 1
+            flag=1
     elif province!="NOT":
         print("start possible ------------")
         result = possible_match(first_name, last_name, province)
-        # for possible 2
-        flag = 2
+        if result==0:
+            flag=0
+        else:
+            # for strong 1
+            flag=2
         
     elif date_of_birth=="0000-00-00" and province=="NOT":
         print("start weak ------------")
         result = weak_match(first_name, last_name)
-        # for weak
-        flag = 3
+        if result==0:
+            flag=0
+        else:
+            # for strong 1
+            flag=3
     
     return flag
         

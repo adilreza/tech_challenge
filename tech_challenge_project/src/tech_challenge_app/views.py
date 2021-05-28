@@ -64,8 +64,12 @@ class RecordApi(APIView):
             date_of_birth="0000-00-00"
 
         decision = match(first_name, last_name, province, date_of_birth)
-        result = update_match(decision, first_name, last_name, province, date_of_birth)
-        return JsonResponse({"message":"updated database"})
+        if decision==0:
+            Record.objects.create(first_name=first_name, last_name=last_name, province=province, dat_of_birth=date_of_birth)
+            return JsonResponse({"messsage":"Only Record inserted", "status":201})
+        else:
+            result = update_match(decision, first_name, last_name, province, date_of_birth)
+            return JsonResponse({"message":"updated database","status":201})
         
     def delete(self, request, pk, format=None):
         pk2 = int(pk)
