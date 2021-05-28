@@ -8,7 +8,7 @@ from src.tech_challenge_app.views import MatchViewSet
 
 router = DefaultRouter()
 
-router.register("records", RecordViewSet)
+#router.register("records", RecordViewSet)
 router.register("notices", NoticeSerializer)
 router.register("matches", MatchViewSet)
 

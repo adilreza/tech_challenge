@@ -52,5 +52,5 @@ urlpatterns = [
     ),
     path('admin/', admin.site.urls),
     path('api/', include("src.api.urls")),
-    path('api/v1/record/trigger', RecordApi.as_view())
+    path('api/v1/records/<int:pk>/', RecordApi.as_view())
 ]

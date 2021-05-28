@@ -28,7 +28,10 @@ class NoticeSerializer(viewsets.ModelViewSet):
 
 class RecordApi(APIView):
     def get(self, request):
-        return JsonResponse({"status":"OK working"})
+        data = Record.objects.values()
+        data_list = list(data)
+        print(data_list)
+        return JsonResponse({"record":data_list})
     
     def post(self, request):
         json_data = json.loads(request.body)
@@ -49,3 +52,12 @@ class RecordApi(APIView):
         decision = match(first_name, last_name, province, date_of_birth)
         result = update_match(decision, first_name, last_name, province, date_of_birth)
         return JsonResponse({"message":"updated database"})
+    def delete(self, request, pk, format=None):
+        pk2 = int(pk)
+        data = Match.objects.filter(pk=pk2)
+        for sdata in data:
+            r_id = sdata.record.id
+            n_id = sdata.notice.id
+        Match.objects.filter(pk=pk2).delete()
+        Record.objects.filter(pk=r_id).delete()
+        return JsonResponse({"message":"deleted_successfully"})
