@@ -27,11 +27,18 @@ class NoticeSerializer(viewsets.ModelViewSet):
     filter_backends  = (DjangoFilterBackend, )
 
 class RecordApi(APIView):
+
     def get(self, request):
         data = Record.objects.values()
         data_list = list(data)
-        print(data_list)
+        
         return JsonResponse({"record":data_list})
+    
+    def get(self, request, pk, format=None):
+        data = Record.objects.filter(pk=pk).values()
+        data_list = list(data)
+        return JsonResponse({"record":data_list})
+
     
     def post(self, request):
         json_data = json.loads(request.body)
