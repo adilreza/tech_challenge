@@ -10,7 +10,7 @@ router = DefaultRouter()
 
 router.register("records", RecordViewSet)
 router.register("notices", NoticeSerializer)
-router.register("matchs", MatchViewSet)
+router.register("matches", MatchViewSet)
 
 
 urlpatterns = [
