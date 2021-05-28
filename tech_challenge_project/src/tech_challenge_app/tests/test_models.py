@@ -7,7 +7,7 @@ class ModelTestCase(APITestCase):
 
     def test_record(self):
         data = {"first_name":"adil", "last_name":"reza","province":"Ok","dat_of_birth":"1997-01-12"}
-        url = "/api/v1/records/"
+        url = "/api/v1/record/"
         response = self.client.post(url, data)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -31,7 +31,7 @@ class ModelTestCase(APITestCase):
 
     def test_record_400(self):
         data = {"first_name":[], "last_name":"reza","province":"Ok","dat_of_birth":"1997-01-12"}
-        url = "/api/v1/records/"
+        url = "/api/v1/record/"
         response = self.client.post(url, data)
 
         self.assertEqual(response.status_code, 400)
@@ -59,7 +59,7 @@ class ModelTestCase(APITestCase):
         response11 = self.client.get(url2)
 
         data = {"first_name":"adil", "last_name":"reza","province":"Ok","dat_of_birth":"1997-01-12"}
-        url = "/api/v1/records/"
+        url = "/api/v1/record/"
         self.response2 = self.client.post(url, data)
         url3 = f"/api/v1/records/{self.response2.data['id']}"
         response22 = self.client.get(url3)
