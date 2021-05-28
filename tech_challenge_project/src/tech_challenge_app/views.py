@@ -72,11 +72,18 @@ class RecordApi(APIView):
             return JsonResponse({"message":"updated database","status":201})
         
     def delete(self, request, pk, format=None):
-        pk2 = int(pk)
-        data = Match.objects.filter(pk=pk2)
-        for sdata in data:
-            r_id = sdata.record.id
-            n_id = sdata.notice.id
-        Match.objects.filter(pk=pk2).delete()
-        Record.objects.filter(pk=r_id).delete()
-        return JsonResponse({"message":"deleted_successfully"})
+        flag = 0
+        try:
+            result =  Record.objects.get(pk=pk)
+            flag=2
+        except Record.DoesNotExist:
+            raise Http404
+        if flag==2:
+            pk2 = int(pk)
+            data = Match.objects.filter(pk=pk2)
+            for sdata in data:
+                r_id = sdata.record.id
+                n_id = sdata.notice.id
+            Match.objects.filter(pk=pk2).delete()
+            Record.objects.filter(pk=r_id).delete()
+            return JsonResponse({"message":"deleted_successfully"})
